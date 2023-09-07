@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Author Dashboard</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">Writer's Library Hub</a></h1>
+    <nav>
+      <div>
+        <a href="/books">Explore</a>
+        <a href="/books/author/<%= user.id %>">My Books</a>
+        <a href="/books/add">Add New Book</a>
+      </div>
+      <form class="nav-form" action="/logout" method="post">
+        <a href="/authors/<%= user.id %>/profile">
+          <%= user.name %>
+        </a>
+        <button>Logout</button>
+      </form>
+    </nav>
+  </header>
+  <section>
+    <ul class="cards">
+      <% books.forEach(book=> { %>
+        <li class="card">
+          <h3>
+            <%= book.title %>
+          </h3>
+          <p>
+            <%= book.description.slice(0, 200) %> ...
+          </p>
+          <div>
+            <a href="/books/<%= book.id %>" class="btn">Read more</a>
+            <p>-- <a href="/authors/<%= book.authorID.id %>/profile"><em>
+                  <%= book.authorID.name %>
+                </em></a></p>
+          </div>
+
+        </li>
+        <% }) %>
+    </ul>
+  </section>
+</body>
+
+</html>

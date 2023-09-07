@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Author Details</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">Writer's Library Hub</a></h1>
+    <nav>
+      <div>
+        <a href="/books">Explore</a>
+        <a href="/books/author/<%= user.id %>">My Books</a>
+        <a href="/books/add">Add New Book</a>
+      </div>
+      <form class="nav-form" action="/logout" method="post">
+        <a href="/authors/<%= user.id %>/profile">
+          <%= user.name %>
+        </a>
+        <button>Logout</button>
+      </form>
+    </nav>
+  </header>
+  <section>
+    <h1>Author Profile</h1>
+    <table>
+      <tr>
+        <th>Name:</th>
+        <td>
+          <%= author.name %>
+        </td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td>
+          <%= author.email %>
+        </td>
+      </tr>
+      <tr>
+        <th>Phone Number:</th>
+        <td>
+          <%= author.phone %>
+        </td>
+      </tr>
+      <tr>
+        <th>Number of Books:</th>
+        <td>
+          <%= author.books.length %>
+        </td>
+      </tr>
+    </table>
+
+    <% if ( isAuthorized ) { %>
+      <div class="button-group">
+        <a href="/authors/<%= user.id %>/update"><button class="edit-button">Edit</button></a>
+        <form action="/authors/<%= user.id %>/delete" method="post"><button class="delete-button">Delete</button></form>
+      </div>
+      <% } else { %>
+        <a href="/books/author/<%= author.id %>"><button class="edit-button">See all books by author</button></a>
+      <% } %>
+  </section>
+</body>
+
+</html>

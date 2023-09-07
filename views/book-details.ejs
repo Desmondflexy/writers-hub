@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Book Details</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">Writer's Library Hub</a></h1>
+    <nav>
+      <div>
+        <a href="/books">Explore</a>
+        <a href="/books/author/<%= user.id %>">My Books</a>
+        <a href="/books/add">Add New Book</a>
+      </div>
+      <form class="nav-form" action="/logout" method="post">
+        <a href="/authors/<%= user.id %>/profile">
+          <%= user.name %>
+        </a>
+        <button>Logout</button>
+      </form>
+    </nav>
+  </header>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h2><%= book.title %></h2>
+    <table>
+      <tr>
+        <th>Genre:</th>
+        <td><%= book.genre %></td>
+      </tr>
+      <tr>
+        <th>Publisher:</th>
+        <td><%= book.publisher %></td>
+      </tr>
+      <tr>
+        <th>Page Count:</th>
+        <td><%= book.pageCount %></td>
+      </tr>
+      <tr>
+        <th>Date Published:</th>
+        <td><%= book.datePublished.toDateString() %></td>
+      </tr>
+    </table>
+    <h3>Description</h3>
+    <div>
+
+    </div>
+    <p class="raw-text"><%= book.description %></p>
+    <% if ( isAuthorized ) { %>
+    <div class="button-group">
+      <a href="/books/<%= book.id %>/update"><button class="edit-button">Edit</button></a>
+      <form action="/books/<%= book.id %>/delete" method="post"><button class="delete-button">Delete</button></form>
+    </div>
+    <% } %>
+
+  </section>
+</body>
+
+</html>

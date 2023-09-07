@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Add a New Book</title>
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/">Writer's Library Hub</a></h1>
+    <nav>
+      <div>
+        <a href="/books">Explore</a>
+        <a href="/books/author/<%= user.id %>">My Books</a>
+        <a href="/books/add">Add New Book</a>
+      </div>
+      <form class="nav-form" action="/logout" method="post">
+        <a href="/authors/<%= user.id %>/profile">
+          <%= user.name %>
+        </a>
+        <button>Logout</button>
+      </form>
+    </nav>
+  </header>
+  <section>
+    <h2>Add a New Book</h2>
+    <form class="form" action="/books" method="post">
+      <div class="form-group">
+        <label for="title">Book Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+      </div>
+      <div class="form-group">
+        <label for="page-count">Number of Pages:</label>
+        <input type="number" id="page-count" name="pageCount" required>
+      </div>
+      <div class="form-group">
+        <label for="publisher">Publisher:</label>
+        <input type="text" id="publisher" name="publisher" required>
+      </div>
+      <button type="submit">Add Book</button>
+    </form>
+  </section>
+
+</body>
+
+</html>
